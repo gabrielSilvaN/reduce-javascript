@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrupar valores com Reduce Javascript</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <table class="table text-center table-hover">
+            <thead>
+                <tr>
+                    <th>ID Venda</th>                    
+                    <th>Data da Venda</th>
+                    <th>Método(s) de Pagamento</th>
+                    <th>Valor total Venda</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+
+<script>
+
+
+    fetch('./result.json')
+        .then(data => data.json())
+        .then(data => {
+
+
+            const tabela = document.querySelector('tbody')
+
+            const result = trabalhaDados(data)
+
+            result.forEach((metodo, indice) => {
+
+
+                const row = tabela.insertRow()
+
+                const id = row.insertCell(0)
+                id.innerHTML = metodo.idVenda
+               
+                const dataVenda = row.insertCell(1)
+                dataVenda.innerHTML = metodo.dataVenda
+
+                const metodoPagamento = row.insertCell(2)
+                metodoPagamento.innerHTML = metodo.tipoMetodoPagamento
+
+                const valorTotal = row.insertCell(3)
+                valorTotal.innerHTML = `R$ ${metodo.valorTotal}`
+
+            })
+
+        })
+
+    function trabalhaDados(data) {
+
+        const result = data.reduce((acumulador, metodo) => {
+
+            if (!acumulador.hasOwnProperty(metodo.idVenda)) {
+
+                acumulador[metodo.idVenda] = {
+                    idVenda: metodo.idVenda,
+                    id: metodo.id,
+                    dataVenda: metodo.dataVenda,
+                    tipoMetodoPagamento: metodo.tipoMetodoPagamento,
+                    valor: metodo.valor,
+                    valorTotal: metodo.valorTotal
+                }
+
+                return acumulador
+
+            }
+
+            acumulador[metodo.idVenda].tipoMetodoPagamento += `, ${metodo.tipoMetodoPagamento}`
+            return acumulador
+
+        }, {})
+
+        return Object.values(result)
+
+    }
+
+
+</script>
+
+</html>

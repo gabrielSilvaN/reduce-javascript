@@ -1,0 +1,50 @@
+[
+    {
+        "idVenda" : 16, 
+        "valorTotal" : 99.99, 
+        "dataVenda" : "2020-07-05", 
+        "id" : 19,
+        "valor" : 49.99,
+        "tipoMetodoPagamento" : "Crédito"
+    },
+
+    {
+        "idVenda" : 15, 
+        "valorTotal" : 99.99, 
+        "dataVenda" : "2020-07-03", 
+        "id" : 17,
+        "valor" : 99.99,
+        "tipoMetodoPagamento" : "Cheque"
+    }, 
+
+    {
+        "idVenda" : 12, 
+        "valorTotal" : 30, 
+        "dataVenda" : "2020-07-03", 
+        "id" : 14,
+        "valor" : 30,
+        "tipoMetodoPagamento" : "Dinheiro"
+    },
+
+    {
+        "idVenda" : 16, 
+        "valorTotal" : 99.99, 
+        "dataVenda" : "2020-07-05", 
+        "id" : 18,
+        "valor" : 50,
+        "tipoMetodoPagamento" : "Dinheiro"
+    }, 
+
+    {
+        "idVenda" : 14, 
+        "valorTotal" : 100, 
+        "dataVenda" : "2020-07-03", 
+        "id" : 16,
+        "valor" : 100,
+        "tipoMetodoPagamento" : "Link"
+    }
+]
+
+
+
+ 
